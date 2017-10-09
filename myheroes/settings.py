@@ -23,9 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm*lgf@#l)fat65ou1q#j86vve@hz@memf$teyk)kz-xpxjy^s='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', 'my-rest-app-sayone.herokuapp.com']
+DEBUG = TEMPLATE_DEBUG = True
+ALLOWED_HOSTS = ['my-rest-app-sayone.herokuapp.com',]
 
 # Application definition
 
@@ -39,9 +38,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'snippets',
     'django.contrib.sites',
-'corsheaders',
-'rest_auth',
-'rest_framework.authtoken',
+    'corsheaders',
+    'rest_auth',
+    'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
@@ -116,7 +115,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-#
+    #
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
