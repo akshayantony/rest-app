@@ -475,7 +475,7 @@ var HeroSearchService = (function () {
     }
     HeroSearchService.prototype.search = function (term) {
         return this.http
-            .get("http://localhost:8000/search/" + term + "/")
+            .get("https://my-rest-app-sayone.herokuapp.com/search/" + term + "/")
             .map(function (response) { return response.json(); });
     };
     return HeroSearchService;
@@ -520,7 +520,7 @@ var HeroService = (function () {
         this.http = http;
         this.auth = auth;
         this.router = router;
-        this.heroesUrl = 'http://localhost:8000/heroes/';
+        this.heroesUrl = 'https://my-rest-app-sayone.herokuapp.com/heroes/';
         this.data1 = localStorage.getItem('currentUser');
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         this.headers.append('Content-Type', 'application/json');
@@ -566,7 +566,7 @@ var HeroService = (function () {
         var _this = this;
         var data1;
         var key;
-        var url = "http://localhost:8000/rest-auth/registration/";
+        var url = "https://my-rest-app-sayone.herokuapp.com/rest-auth/registration/";
         return this.http
             .post(url, JSON.stringify(data), { headers: this.headers })
             .toPromise()
@@ -863,7 +863,7 @@ var LogoutComponent = (function () {
     LogoutComponent.prototype.logout = function () {
         var _this = this;
         // remove user from local storage to log user out
-        var url = "http://localhost:8000/rest-auth/logout/";
+        var url = "https://my-rest-app-sayone.herokuapp.com/rest-auth/logout/";
         return this.http
             .post(url, { headers: this.headers })
             .toPromise()
@@ -918,7 +918,7 @@ var AuthService = (function () {
         this.http = http;
         this.router = router;
         // private BASE_URL: string = 'http://127.0.0.1:8000';
-        this.BASE_URL = 'http://localhost:8000';
+        this.BASE_URL = 'https://my-rest-app-sayone.herokuapp.com';
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
     }
     AuthService.prototype.test = function () {
@@ -926,7 +926,7 @@ var AuthService = (function () {
     };
     AuthService.prototype.login = function (data) {
         var _this = this;
-        var url = "http://localhost:8000/rest-auth/login/";
+        var url = "https://my-rest-app-sayone.herokuapp.com/rest-auth/login/";
         var key;
         var data1;
         console.log(data);

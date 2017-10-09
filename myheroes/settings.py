@@ -36,40 +36,42 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework.authtoken',
-    'snippets',
-    'corsheaders',
-    'rest_auth',
     'rest_framework',
+    'snippets',
     'django.contrib.sites',
+'corsheaders',
+'rest_auth',
+'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-'corsheaders.middleware.CorsPostCsrfMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
+
+ROOT_URLCONF = 'myheroes.urls'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
-ROOT_URLCONF = 'myheroes.urls'
 
 TEMPLATES = [
     {
@@ -155,7 +157,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+'my-rest-app-sayone.herokuapp.com','localhost:8000',
+)
+
 CORS_ALLOW_CREDENTIALS=True
 CSRF_TRUSTED_ORIGINS = (
     'localhost', 'my-rest-app-sayone.herokuapp.com',
@@ -172,3 +178,7 @@ ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'dist')
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR),
 ]
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+CORS_REPLACE_HTTPS_REFERER = True
