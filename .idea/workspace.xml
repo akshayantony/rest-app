@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db1ff7a9-a4ba-4cbc-bfd1-345fe4d0c295" name="Default" comment="" />
+    <list default="true" id="db1ff7a9-a4ba-4cbc-bfd1-345fe4d0c295" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/inline.bundle.js.map" afterPath="$PROJECT_DIR$/dist/inline.bundle.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main.bundle.js" afterPath="$PROJECT_DIR$/dist/main.bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main.bundle.js.map" afterPath="$PROJECT_DIR$/dist/main.bundle.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myheroes/settings.py" afterPath="$PROJECT_DIR$/myheroes/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/snippets/views.py" afterPath="$PROJECT_DIR$/snippets/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/inline.bundle.js.map" afterPath="$PROJECT_DIR$/static/inline.bundle.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/main.bundle.js" afterPath="$PROJECT_DIR$/static/main.bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/main.bundle.js.map" afterPath="$PROJECT_DIR$/static/main.bundle.js.map" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myheroes/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2047">
-              <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+            <state relative-caret-position="-1314">
+              <caret line="26" column="62" lean-forward="false" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -43,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myheroes/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="468">
@@ -88,8 +98,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/snippets/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+            <state relative-caret-position="383">
+              <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -123,12 +133,12 @@
         <option value="$PROJECT_DIR$/snippets/forms.py" />
         <option value="$PROJECT_DIR$/snippets/serializers.py" />
         <option value="$PROJECT_DIR$/snippets/urls.py" />
-        <option value="$PROJECT_DIR$/snippets/views.py" />
         <option value="$PROJECT_DIR$/myheroes/urls.py" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/myheroes/wsgi.py" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/myheroes/settings.py" />
+        <option value="$PROJECT_DIR$/snippets/views.py" />
       </list>
     </option>
   </component>
@@ -181,6 +191,11 @@
               <item name="rest-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="rest-app" type="462c0819:PsiDirectoryNode" />
               <item name="myheroes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rest-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rest-app" type="462c0819:PsiDirectoryNode" />
+              <item name="snippets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -610,16 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/snippets/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/snippets/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -662,14 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myheroes/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2047">
-          <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myheroes/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -677,6 +674,24 @@
           <folding>
             <element signature="e#642#682#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myheroes/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1314">
+          <caret line="26" column="62" lean-forward="false" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

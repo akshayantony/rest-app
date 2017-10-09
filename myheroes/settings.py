@@ -24,7 +24,7 @@ SECRET_KEY = 'm*lgf@#l)fat65ou1q#j86vve@hz@memf$teyk)kz-xpxjy^s='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = ['my-rest-app-sayone.herokuapp.com',]
+ALLOWED_HOSTS = ['my-rest-app-sayone.herokuapp.com','localhost']
 
 # Application definition
 

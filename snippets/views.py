@@ -34,7 +34,7 @@ class SearchList(generics.ListAPIView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects
     serializer_class = UserSerializer
-
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 #

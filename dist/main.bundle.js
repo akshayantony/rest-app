@@ -108,15 +108,21 @@ AppRoutingModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(AccountsService) {
+        this.AccountsService = AccountsService;
         this.title = 'Tour of Heroes';
     }
     return AppComponent;
@@ -124,10 +130,12 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <nav>\n    <a routerLink='/dashboard' routerLinkActive=\"active\">Dashboard</a>\n    <a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n    </nav>\n   <router-outlet></router-outlet>\n  "
-    })
+        template: "\n     <h1 style=\"padding-left:70px\">{{title}}</h1>\n  <nav>\n    <div *ngIf=\"this.AccountsService.isLoggedIn()\" style=\"padding-left:70px\">\n    <a routerLink=\"/dashboard\">Dashboard</a>\n    <a routerLink=\"/heroes\">Heroes</a>\n    <a routerLink=\"/logout\">Logout</a>\n    </div>\n    <div *ngIf=\"!this.AccountsService.isLoggedIn()\" style=\"padding-left:70px\">\n    <a routerLink=\"/login\">Login</a>\n    <a routerLink=\"/signin\">SignUp</a>\n    </div>\n  </nav>\n  <router-outlet></router-outlet>\n  "
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */]) === "function" && _a || Object])
 ], AppComponent);
 
+var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -564,11 +572,13 @@ var HeroService = (function () {
     };
     HeroService.prototype.usercreate = function (data) {
         var _this = this;
+        var headers1 = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         var data1;
         var key;
+        headers1.append('Content-Type', 'application/json');
         var url = "https://my-rest-app-sayone.herokuapp.com/rest-auth/registration/";
         return this.http
-            .post(url, JSON.stringify(data), { headers: this.headers })
+            .post(url, JSON.stringify(data), { headers: headers1 })
             .toPromise()
             .then(function (res) {
             key = res.json()['key'];
@@ -577,7 +587,7 @@ var HeroService = (function () {
             }
             data1 = localStorage.getItem('currentUser');
             console.log(data1);
-            _this.router.navigate(['home']);
+            _this.router.navigate(['dashboard']);
         })
             .catch(this.handleError);
     };
@@ -819,7 +829,7 @@ __decorate([
 LoginComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'login',
-        template: "\n  <div class=\"row\">\n  <div class=\"col-md-4\">\n    <h1>Login</h1>\n    <hr><br>\n    <form #log=\"ngForm\" (ngSubmit)=\"onLogin()\" novalidate>\n     <div class=\"form-group\">\n       <label for=\"username\">Username</label>\n       <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"enter username\" ngModel name=\"username\" required>\n     </div>\n      \n     <div class=\"form-group\">\n       <label for=\"password\">Password</label>\n       <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"enter password\" ngModel name=\"password\" required>\n     </div>\n     <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n    <p>New User ?? <a routerLink=\"/signin\" routerLinkActive=\"active\">Signin</a></p>\n  </div>\n</div>\n  "
+        template: "\n  <div class=\"row\">\n  <div class=\"col-md-4\">\n    <h1>Login</h1>\n    <hr><br>\n    <form #log=\"ngForm\" (ngSubmit)=\"onLogin()\" novalidate>\n     <div class=\"form-group\">\n       <label for=\"username\">Username</label>\n       <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"enter username\" ngModel name=\"username\" required>\n     </div>\n      \n     <div class=\"form-group\">\n       <label for=\"password\">Password</label>\n       <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"enter password\" ngModel name=\"password\" required>\n     </div>\n     <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n  "
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], LoginComponent);
@@ -859,6 +869,7 @@ var LogoutComponent = (function () {
         this.headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
     }
     LogoutComponent.prototype.ngOnInit = function () {
+        this.logout();
     };
     LogoutComponent.prototype.logout = function () {
         var _this = this;
@@ -869,15 +880,15 @@ var LogoutComponent = (function () {
             .toPromise()
             .then(function (response) {
             localStorage.removeItem('currentUser');
-            _this.router.navigate(['home']);
+            _this.router.navigate(['login']);
         });
     };
     return LogoutComponent;
 }());
 LogoutComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'logout',
-        template: "{{logout()}}"
+        selector: 'login',
+        template: "\n  <div class=\"row\">\n  <div class=\"col-md-4\">\n    <h1>Login</h1>\n    <hr><br>\n    <form #log=\"ngForm\" (ngSubmit)=\"onLogin()\" novalidate>\n     <div class=\"form-group\">\n       <label for=\"username\">Username</label>\n       <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"enter username\" ngModel name=\"username\" required>\n     </div>\n      \n     <div class=\"form-group\">\n       <label for=\"password\">Password</label>\n       <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"enter password\" ngModel name=\"password\" required>\n     </div>\n     <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n  "
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["b" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */]) === "function" && _c || Object])
 ], LogoutComponent);
@@ -939,7 +950,7 @@ var AuthService = (function () {
             }
             data1 = localStorage.getItem('currentUser');
             console.log(data1);
-            _this.router.navigate(['home']);
+            _this.router.navigate(['dashboard']);
         })
             .catch(this.handleError);
     };
@@ -1023,7 +1034,7 @@ var _a, _b;
 /***/ "../../../../../src/app/signinform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #f=\"ngForm\" (ngSubmit)=\"form.valid && onSubmit() \" novalidate>\n\n\n<div class=\"form-group\" \n         [ngClass]=\"{\n        'has-danger': username.invalid && (username.dirty || username.touched),\n        'has-success': username.valid && (username.dirty || username.touched)\n      }\">\n  <label for=\"username\">Username</label>\n  <input type=\"text\" class=\"form-control\" id=\"username\"\n         required\n         ngModel name=\"username\"  #username=\"ngModel\">\n          <div style=\"color:red\" \n        *ngIf=\"username.errors && (username.dirty || username.touched || form.submitted)\">\n        \n        <p *ngIf=\"username.errors.required\">\n            The name is required\n        </p>\n    </div>\n\n</div>\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': email.invalid && (email.dirty || email.touched),\n        'has-success': email.valid && (email.dirty || email.touched)\n      }\">\n  <label for=\"email\">Email</label>\n  <input type=\"email\" class=\"form-control\" id=\"email\"\n         required name=\"email\" \n         ngModel #email=\"ngModel\"  pattern=\"[^ @]*@[^ @]*\">\n         <div style=\"color:red\" \n         *ngIf=\"email.errors && (email.dirty || email.touched || form.submitted)\">\n        \n        <p *ngIf=\"email.errors.required\">\n            Email is required\n        </p>\n        <p *ngIf=\"email.errors.pattern\"> Email must contain at least the @ character </p>\n        </div>\n\n</div>\n\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': password1.invalid && (password1.dirty || password1.touched),\n        'has-success': password1.valid && (password1.dirty || password1.touched)\n      }\">\n  <label for=\"password1\">password</label>\n  <input type=\"password\" class=\"form-control\" id=\"password1\" required\n         ngModel name=\"password1\" #password1=\"ngModel\" pattern=\"^(?=.*[a-z])(?!.*\\s).{8,}$\" >\n         <div style=\"color:red\" \n         *ngIf=\"password1.errors && (password1.dirty || password1.touched || form.submitted)\">\n        \n        <p *ngIf=\"password1.errors.required\">\n            password is required\n        </p>\n        <p *ngIf=\"password1.errors.pattern\"> password must be 8 characters long  </p>\n        </div>\n\n</div>\n\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': password1.invalid && (password1.dirty || password1.touched),\n        'has-success': password1.valid && (password1.dirty || password1.touched)\n      }\">\n  <label for=\"password2\">Confirmpassword</label>\n  <input type=\"password\" class=\"form-control\" id=\"password2\"\n         required\n         ngModel name=\"password2\" #password2=\"ngModel\">\n\n        <div style=\"color:red\"  *ngIf=\"password2.touched && (password1.value!=password2.value) \"\n             class=\"alert alert-danger\">\n              Password doesnot match\n        </div>\n\n\n</div>\n\n<button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"f.invalid\" >SignUp</button>\n</form>\n\n<pre>{{f.value|json}}</pre>"
+module.exports = "<form #f=\"ngForm\" (ngSubmit)=\"form.valid && onSubmit() \" novalidate>\n\n\n<div class=\"form-group\" \n         [ngClass]=\"{\n        'has-danger': username.invalid && (username.dirty || username.touched),\n        'has-success': username.valid && (username.dirty || username.touched)\n      }\">\n  <label for=\"username\">Username</label>\n  <input type=\"text\" class=\"form-control\" id=\"username\"\n         required\n         ngModel name=\"username\"  #username=\"ngModel\">\n          <div style=\"color:red\" \n        *ngIf=\"username.errors && (username.dirty || username.touched || form.submitted)\">\n        \n        <p *ngIf=\"username.errors.required\">\n            The name is required\n        </p>\n    </div>\n\n</div>\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': email.invalid && (email.dirty || email.touched),\n        'has-success': email.valid && (email.dirty || email.touched)\n      }\">\n  <label for=\"email\">Email</label>\n  <input type=\"email\" class=\"form-control\" id=\"email\"\n         required name=\"email\" \n         ngModel #email=\"ngModel\"  pattern=\"[^ @]*@[^ @]*\">\n         <div style=\"color:red\" \n         *ngIf=\"email.errors && (email.dirty || email.touched || form.submitted)\">\n        \n        <p *ngIf=\"email.errors.required\">\n            Email is required\n        </p>\n        <p *ngIf=\"email.errors.pattern\"> Email must contain at least the @ character </p>\n        </div>\n\n</div>\n\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': password1.invalid && (password1.dirty || password1.touched),\n        'has-success': password1.valid && (password1.dirty || password1.touched)\n      }\">\n  <label for=\"password1\">password</label>\n  <input type=\"password\" class=\"form-control\" id=\"password1\" required\n         ngModel name=\"password1\" #password1=\"ngModel\" pattern=\"^(?=.*[a-z])(?!.*\\s).{8,}$\" >\n         <div style=\"color:red\" \n         *ngIf=\"password1.errors && (password1.dirty || password1.touched || form.submitted)\">\n        \n        <p *ngIf=\"password1.errors.required\">\n            password is required\n        </p>\n        <p *ngIf=\"password1.errors.pattern\"> password must be 8 characters long  </p>\n        </div>\n\n</div>\n\n\n<div class=\"form-group\" [ngClass]=\"{\n        'has-danger': password1.invalid && (password1.dirty || password1.touched),\n        'has-success': password1.valid && (password1.dirty || password1.touched)\n      }\">\n  <label for=\"password2\">Confirmpassword</label>\n  <input type=\"password\" class=\"form-control\" id=\"password2\"\n         required\n         ngModel name=\"password2\" #password2=\"ngModel\">\n\n        <div style=\"color:red\"  *ngIf=\"password2.touched && (password1.value!=password2.value) \"\n             class=\"alert alert-danger\">\n              Password doesnot match\n        </div>\n\n\n</div>\n\n<button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"f.invalid\" >SignUp</button>\n</form>\n\n"
 
 /***/ }),
 
