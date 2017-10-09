@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+'corsheaders.middleware.CorsPostCsrfMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -113,7 +114,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+#
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -155,6 +156,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS=True
+CSRF_TRUSTED_ORIGINS = (
+    'localhost', 'my-rest-app-sayone.herokuapp.com',
+)
+
+
 
 SITE_ID = 1
 ACCOUNT_LOGOUT_ON_GET = True
