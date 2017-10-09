@@ -91,16 +91,29 @@ WSGI_APPLICATION = 'myheroes.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'heroes',
+#         'USER': 'akshay',
+#         'PASSWORD': 'akshay123@',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'heroes',
-        'USER': 'akshay',
-        'PASSWORD': 'akshay123@',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dp70gn31ot8dc',
+        'USER': 'ljdqnykxuhbwgy',
+        'PASSWORD': 'b1d51a9ae14c28ffb42138ca098aa301aa38afec3009d8482b1a629551005d7c',
+        'HOST': 'ec2-174-129-218-106.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
